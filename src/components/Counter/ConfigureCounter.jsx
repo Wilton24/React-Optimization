@@ -1,6 +1,9 @@
 import { useState } from 'react';
+import { log } from '../../log';
+
 
 export default function ConfigureCounter({ handleSetCount }) {
+    log('<ConfigureCounter /> rendered', 1);
     const [enteredNumber, setEnteredNumber] = useState(0);
     const [chosenCount, setChosenCount] = useState(0);
 
