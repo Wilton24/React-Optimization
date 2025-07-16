@@ -1,6 +1,10 @@
-import MillionLint from "@million/lint";
-import { defineConfig } from "vite";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+// import million from 'million/compiler'; // Comment out this import
 
 export default defineConfig({
-  plugins: [MillionLint.vite()],
+  plugins: [
+    // million.vite(), // Comment out this line
+    react(),
+  ],
 });
