@@ -1,3 +1,4 @@
+import React from 'react'; // Add this line
 import { memo } from 'react';
 import { log } from '../../log.js';
 

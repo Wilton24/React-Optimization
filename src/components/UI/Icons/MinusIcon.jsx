@@ -1,4 +1,5 @@
 import { log } from '../../../log.js';
+import React from 'react'; // Add this line
 
 export default function MinusIcon(props) {
   log('<MinusIcon /> rendered', 3);

@@ -1,4 +1,5 @@
-import { useState, memo, useCallback, useMemo } from 'react';
+import React from 'react'; // Add this line
+import { useState, memo, useCallback, useMemo, useEffect } from 'react';
 import CounterHistory from './CounterHistory.jsx';
 import IconButton from '../UI/IconButton.jsx';
 import MinusIcon from '../UI/Icons/MinusIcon.jsx';
@@ -27,18 +28,24 @@ function isPrime(number) {
 const Counter = memo(function Counter({ initialCount }) {
   log('<Counter /> rendered', 1);
 
+  // run initial count on mount
+  // useEffect(() => {
+  //   setCounterChanges((prevCounterChanges) => [{ value: initialCount, id: Math.random() * 1000 }, ...prevCounterChanges]);
+  // }, [initialCount]);
+
   const initialCountIsPrime = useMemo(
     () => isPrime(initialCount),
     [initialCount]
   );
 
+
   // const [counter, setCounter] = useState(initialCount);
-  const [counterChanges, setCounterChanges] = useState([initialCount]);
+  const [counterChanges, setCounterChanges] = useState([{ value: initialCount, id: Math.random() * 1000 }]);
 
   const currentCounter = counterChanges.reduce(
-    (prevCounter, counterChange) => prevCounter + counterChange,
-    0
+    (prevCounter, counterChange) => prevCounter + counterChange.value, 0
   );
+  console.log(`${currentCounter}`);
 
   const handleDecrement = useCallback(function handleDecrement() {
     // setCounter((prevCounter) => prevCounter - 1);
